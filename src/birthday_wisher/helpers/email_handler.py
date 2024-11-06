@@ -25,7 +25,7 @@ class EmailHandler:
                     msg=f"Subject:Happy Birthday!\n\n{email_text}"
                 )
 
-                # Send notification to Morgan
+                # Send notification to Yourself
                 connection.sendmail(
                     from_addr=sender_email,
                     to_addrs=YOUR_EMAIL,

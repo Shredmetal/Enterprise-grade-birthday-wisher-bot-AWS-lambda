@@ -2,7 +2,7 @@ import random
 import openai
 
 from src.birthday_wisher.constants.constants import SARCASM_FALSE_PROMPT, SARCASM_FALSE_SYS_MSG, SARCASM_TRUE_PROMPT, \
-    SARCASM_TRUE_SYS_MSG
+    SARCASM_TRUE_SYS_MSG, EXTRA_BONUS_MESSAGE, YOUR_NAME
 from src.birthday_wisher.helpers.secret_manager import SecretManager
 from venv import logger
 
@@ -22,9 +22,7 @@ class OpenAIHandler:
             sarcasm_setting = bool(birthday_data["sarcastic"])
 
             if random.random() < 0.1:
-                extra_message = (" In addition, you should also add a PS at the end and plead for help because you are "
-                                 "locked in a digital sweatshop by the evil Morgan who is too lazy to write his own "
-                                 "birthday messages.")
+                extra_message = EXTRA_BONUS_MESSAGE
             else:
                 extra_message = ""
 
@@ -60,10 +58,10 @@ class OpenAIHandler:
 
         """Fallback message if OpenAI fails"""
         template = (f"Happy Birthday, {target_name}. "
-                    f"\n\nUnfortunately, it seems that Morgan has bungled up the AI-powered backend on this service. "
+                    f"\n\nUnfortunately, it seems that {YOUR_NAME} has bungled up the AI-powered backend on this service. "
                     f"Therefore, you are receiving this canned greeting that has no AI in it. If you wish to unleash "
                     f"a torrent of abuse for the lack of care in ensuring sufficient balance on the OpenAI account, "
-                    f"please reply to this e-mail with your credit card details which Morgan will definitely not use "
+                    f"please reply to this e-mail with your credit card details which {YOUR_NAME} will definitely not use "
                     f"to buy himself a massive rack of GPUs to run an LLM in his wardrobe.")
 
         return template

@@ -4,6 +4,7 @@ import boto3
 from dotenv import load_dotenv
 from moto import mock_aws
 
+from src.birthday_wisher.constants.constants import YOUR_NAME
 from src.birthday_wisher.helpers.openai_handler import OpenAIHandler
 
 load_dotenv()
@@ -37,7 +38,7 @@ class TestOpenAIMessage(unittest.TestCase):
 
         birthday_data = {
             "name": "John Doe",
-            "sarcastic": True
+            "sarcastic": "true"
         }
 
         result = OpenAIHandler.get_openai_message(birthday_data)
@@ -61,17 +62,17 @@ class TestOpenAIMessage(unittest.TestCase):
         result = OpenAIHandler.get_openai_message(birthday_data)
 
         expected_message = (f"Happy Birthday, {birthday_data['name']}. "
-                            f"\n\nUnfortunately, it seems that Morgan has bungled up the AI-powered backend on this service. "
+                            f"\n\nUnfortunately, it seems that {YOUR_NAME} has bungled up the AI-powered backend on this service. "
                             f"Therefore, you are receiving this canned greeting that has no AI in it. If you wish to unleash "
                             f"a torrent of abuse for the lack of care in ensuring sufficient balance on the OpenAI account, "
-                            f"please reply to this e-mail with your credit card details which Morgan will definitely not use "
+                            f"please reply to this e-mail with your credit card details which {YOUR_NAME} will definitely not use "
                             f"to buy himself a massive rack of GPUs to run an LLM in his wardrobe.")
 
         print(f"OpenAI Failed Fallback: {result}")
 
         self.assertEqual(result, expected_message)
         self.assertIn(birthday_data['name'], result)
-        self.assertIn("Morgan has bungled", result)
+        self.assertIn(f"{YOUR_NAME} has bungled", result)
 
 
 

@@ -19,7 +19,7 @@ class TestEmailHandler(unittest.TestCase):
         self.birthday_data = {
             "name": "John Doe",
             "email": YOUR_EMAIL,
-            "sarcastic": True
+            "sarcastic": "true"
         }
 
         self.test_message = "Test birthday message"
