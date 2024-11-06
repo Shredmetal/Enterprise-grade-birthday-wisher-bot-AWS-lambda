@@ -4,7 +4,7 @@ from venv import logger
 class SecretManager:
 
     @staticmethod
-    def get_secret(secret_name):
+    def get_secret(secret_name) -> str:
         ssm = boto3.client('ssm', region_name='us-east-1')
         try:
             response = ssm.get_parameter(

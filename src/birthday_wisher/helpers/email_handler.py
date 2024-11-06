@@ -6,7 +6,7 @@ from src.birthday_wisher.helpers.secret_manager import SecretManager
 class EmailHandler:
 
     @staticmethod
-    def send_birthday_emails(birthday_data, email_text):
+    def send_birthday_emails(birthday_data, email_text) -> bool:
         """Send birthday emails to the birthday person and CC Yourself"""
         try:
             # Get email credentials from SSM

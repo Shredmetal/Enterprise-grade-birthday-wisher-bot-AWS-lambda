@@ -1,17 +1,15 @@
 import random
 import openai
-
 from src.birthday_wisher.constants.constants import SARCASM_FALSE_PROMPT, SARCASM_FALSE_SYS_MSG, SARCASM_TRUE_PROMPT, \
     SARCASM_TRUE_SYS_MSG, EXTRA_BONUS_MESSAGE, YOUR_NAME
 from src.birthday_wisher.helpers.secret_manager import SecretManager
 from venv import logger
 
+
 class OpenAIHandler:
 
-
-
     @staticmethod
-    def get_openai_message(birthday_data):
+    def get_openai_message(birthday_data) -> str:
 
         try:
             client = openai.Client(
@@ -52,7 +50,7 @@ class OpenAIHandler:
             return OpenAIHandler.get_fallback_message(birthday_data)
 
     @staticmethod
-    def get_fallback_message(birthday_data):
+    def get_fallback_message(birthday_data) -> str:
 
         target_name = birthday_data["name"]
 

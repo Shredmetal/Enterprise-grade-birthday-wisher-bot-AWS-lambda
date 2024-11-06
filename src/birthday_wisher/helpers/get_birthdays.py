@@ -1,13 +1,14 @@
 import csv
 from datetime import datetime, timezone
 from venv import logger
+from typing import List
 import boto3
 
 
 class BirthdayChecker:
     @staticmethod
-    def get_todays_birthdays(bucket_name, file_key):
-        """Get today's birthdays using simple CSV reading"""
+    def get_todays_birthdays(bucket_name, file_key) -> List:
+        """Get today's birthdays using simple CSV reading from S3 bucket"""
         try:
             s3 = boto3.client('s3')
             response = s3.get_object(Bucket=bucket_name, Key=file_key)
