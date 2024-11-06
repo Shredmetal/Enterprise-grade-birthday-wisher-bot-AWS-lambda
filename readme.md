@@ -9,7 +9,8 @@ Reads birthdays from S3, generates messages via OpenAI (dw there's a fallback if
 ## Setup
 
 1. **AWS Resources Required**:
-   - S3 bucket with `birthdays.csv` file (format: name,email,day,month,sarcastic)
+   - S3 bucket with `birthdays.csv` file (required headers: name,email,day,month,sarcastic)
+   - The 'sarcastic' header in the `birthdays.csv` file is a column that is either `true` or `false` and determines whether that friend is going to get a sarcastic birthday greeting or not.
    - SSM Parameters:
 
 ```
