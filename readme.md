@@ -1,5 +1,7 @@
 # Birthday Wisher Lambda
 
+[![codecov](https://codecov.io/github/Shredmetal/Enterprise-grade-birthday-wisher-bot-AWS-lambda/graph/badge.svg?token=U7HDVH41PA)](https://codecov.io/github/Shredmetal/Enterprise-grade-birthday-wisher-bot-AWS-lambda)
+
 I was studying for AWS Cloud Practitioner and uhhh, got bored.
 
 Automatically sends personalised birthday wishes using OpenAI. 
