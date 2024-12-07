@@ -96,7 +96,7 @@ Upload the generated `deployment-package.zip` to Lambda.
 Requires `.env` file with:
 
 ```
-OPENAI_API_KEY=your-key
+OPENAI_API_KEY=your-key / or ANTHROPIC_API_KEY, depending on constants
 SENDER_EMAIL=your-email
 EMAIL_PASSWORD=your-password
 BUCKET_NAME=your-bucket
