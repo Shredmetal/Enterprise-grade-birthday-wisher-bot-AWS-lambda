@@ -28,7 +28,7 @@ class TestLambdaHandler(unittest.TestCase):
 
     @mock_aws
     @patch('src.birthday_wisher.helpers.get_birthdays.BirthdayChecker.get_todays_birthdays')
-    @patch('src.birthday_wisher.helpers.openai_handler.OpenAIHandler.get_openai_message')
+    @patch('src.birthday_wisher.helpers.openai_handler.OpenAIHandler.get_birthday_message')
     @patch('src.birthday_wisher.helpers.email_handler.EmailHandler.send_birthday_emails')
     def test_successful_birthday_processing(self, mock_email, mock_openai, mock_birthdays):
         # Configure mocks
@@ -66,7 +66,7 @@ class TestLambdaHandler(unittest.TestCase):
 
     @mock_aws
     @patch('src.birthday_wisher.helpers.get_birthdays.BirthdayChecker.get_todays_birthdays')
-    @patch('src.birthday_wisher.helpers.openai_handler.OpenAIHandler.get_openai_message')
+    @patch('src.birthday_wisher.helpers.openai_handler.OpenAIHandler.get_birthday_message')
     @patch('src.birthday_wisher.helpers.email_handler.EmailHandler.send_birthday_emails')
     def test_failed_email_sending(self, mock_email, mock_openai, mock_birthdays):
         # Configure mocks
@@ -96,7 +96,7 @@ class TestLambdaHandler(unittest.TestCase):
 
     @mock_aws
     @patch('src.birthday_wisher.helpers.get_birthdays.BirthdayChecker.get_todays_birthdays')
-    @patch('src.birthday_wisher.helpers.openai_handler.OpenAIHandler.get_openai_message')
+    @patch('src.birthday_wisher.helpers.openai_handler.OpenAIHandler.get_birthday_message')
     @patch('src.birthday_wisher.helpers.email_handler.EmailHandler.send_birthday_emails')
     def test_multiple_birthdays_mixed_success(self, mock_email, mock_openai, mock_birthdays):
         # Create multiple test birthday entries

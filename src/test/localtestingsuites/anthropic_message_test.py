@@ -6,30 +6,29 @@ from moto import mock_aws
 
 from src.birthday_wisher.constants.constants import YOUR_NAME
 from src.birthday_wisher.helpers.llm_api_factory import LLMAPIFactory
-from src.birthday_wisher.helpers.llm_api_handlers.openai_handler import OpenAIHandler
 
 load_dotenv()
 
-class TestOpenAIMessage(unittest.TestCase):
+class TestAnthropicMessage(unittest.TestCase):
 
     @mock_aws
-    def test_get_openai_message(self):
+    def test_get_anthropic_message(self):
 
         ssm = boto3.client('ssm', region_name='ap-southeast-1')
 
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("ANTHROPIC_API_KEY")
         if not api_key:
             raise ValueError("API key not found in environment variables")
 
         ssm.put_parameter(
-            Name='OPENAI_API_KEY',
+            Name='ANTHROPIC_API_KEY',
             Value=api_key,
             Type='SecureString'
         )
 
         try:
             response = ssm.get_parameter(
-                Name='OPENAI_API_KEY',
+                Name='ANTHROPIC_API_KEY',
                 WithDecryption=True
             )
             print(f"Parameter verification - Retrieved value: {response['Parameter']['Value']}\n")
@@ -42,11 +41,11 @@ class TestOpenAIMessage(unittest.TestCase):
             "sarcastic": "true"
         }
 
-        llm_provider = LLMAPIFactory.get_handler("openai")
+        llm_provider = LLMAPIFactory.get_handler("anthropic")
 
         result = llm_provider.get_birthday_message(birthday_data)
 
-        print(f"Result From OpenAI: {result}")
+        print(f"Result From Anthropic: {result}")
 
         # Assert that we got a non-empty response - THIS WILL ALWAYS PASS - CHECK THE OUTPUT
         self.assertTrue(result)
@@ -54,7 +53,7 @@ class TestOpenAIMessage(unittest.TestCase):
         self.assertGreater(len(result), 0)
 
     @mock_aws
-    def test_openai_message_failure(self):
+    def test_anthropic_message_failure(self):
         birthday_data = {
             "name": "John Doe",
             "sarcastic": True
@@ -63,7 +62,7 @@ class TestOpenAIMessage(unittest.TestCase):
         # Don't set up any SSM parameters - this will cause the OpenAI call to fail
         ssm = boto3.client('ssm', region_name='ap-southeast-1')
 
-        llm_provider = LLMAPIFactory.get_handler("openai")
+        llm_provider = LLMAPIFactory.get_handler("anthropic")
 
         result = llm_provider.get_birthday_message(birthday_data)
 

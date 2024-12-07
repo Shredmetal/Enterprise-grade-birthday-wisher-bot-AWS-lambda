@@ -42,6 +42,7 @@ def create_deployment_package():
         'deployment',
         '--only-binary=:all:',
         'openai',
+        'anthropic',
         'pydantic',
         'pydantic-core',
         'typing_extensions'

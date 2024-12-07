@@ -1,7 +1,7 @@
 import random
 import openai
 from src.birthday_wisher.constants.constants import SARCASM_FALSE_PROMPT, SARCASM_FALSE_SYS_MSG, SARCASM_TRUE_PROMPT, \
-    SARCASM_TRUE_SYS_MSG, EXTRA_BONUS_MESSAGE, YOUR_NAME
+    SARCASM_TRUE_SYS_MSG, EXTRA_BONUS_MESSAGE, YOUR_NAME, FALLBACK_MSG
 from src.birthday_wisher.helpers.secret_manager import SecretManager
 from venv import logger
 
@@ -9,7 +9,7 @@ from venv import logger
 class OpenAIHandler:
 
     @staticmethod
-    def get_openai_message(birthday_data) -> str:
+    def get_birthday_message(birthday_data) -> str:
 
         try:
             client = openai.Client(
@@ -39,7 +39,7 @@ class OpenAIHandler:
                     {"role": "system", "content": f"{system_message}"},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=500,
+                max_tokens=2000,
                 temperature=0.7,
             )
 
@@ -55,11 +55,6 @@ class OpenAIHandler:
         target_name = birthday_data["name"]
 
         """Fallback message if OpenAI fails"""
-        template = (f"Happy Birthday, {target_name}. "
-                    f"\n\nUnfortunately, it seems that {YOUR_NAME} has bungled up the AI-powered backend on this service. "
-                    f"Therefore, you are receiving this canned greeting that has no AI in it. If you wish to unleash "
-                    f"a torrent of abuse for the lack of care in ensuring sufficient balance on the OpenAI account, "
-                    f"please reply to this e-mail with your credit card details which {YOUR_NAME} will definitely not use "
-                    f"to buy himself a massive rack of GPUs to run an LLM in his wardrobe.")
+        template = FALLBACK_MSG(target_name)
 
         return template

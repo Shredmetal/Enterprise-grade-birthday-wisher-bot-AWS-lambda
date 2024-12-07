@@ -1,5 +1,6 @@
-YOUR_NAME = "John" # insert your name here
-YOUR_EMAIL = "john@example.com" # insert your email here
+YOUR_NAME = "Morgan" # insert your name here
+YOUR_EMAIL = "morganj.lee01@gmail.com" # insert your email here
+LLM_PROVIDER_SELECTION = "anthropic"
 SARCASM_FALSE_PROMPT = (lambda x: f"Introduce yourself as {YOUR_NAME}'s birthday wishing bot. Write a funny, warm, and extended "
                                   f"birthday message for {x}.")
 SARCASM_FALSE_SYS_MSG = ("You are a friendly assistant who writes personalised birthday messages. This message will be "
