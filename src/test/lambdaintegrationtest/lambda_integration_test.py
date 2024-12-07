@@ -18,6 +18,7 @@ class TestLambdaIntegration(unittest.TestCase):
     def test_ssm_parameters_exist(self):
         """Test that required SSM parameters exist and are accessible"""
         required_params = [
+            'ANTHROPIC_API_KEY',
             'OPENAI_API_KEY',
             'SENDER_EMAIL',
             'EMAIL_PASSWORD'
