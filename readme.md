@@ -6,7 +6,17 @@ I was studying for AWS Cloud Practitioner and uhhh, got bored.
 
 Automatically sends personalised birthday wishes using OpenAI. 
 
-Reads birthdays from S3, generates messages via OpenAI (dw there's a fallback if you didn't pay the piper), and sends emails.
+Reads birthdays from S3, generates messages via OpenAI/Anthropic depending on which you pick in constants (dw there's a fallback if you didn't pay the piper), and sends emails.
+
+It's 86% coverage because it can't run the lambda integration test locally because that needs a live lambda environment. To run that, shove it on Lambda and run it in test mode.
+
+Run it in test mode by sticking this in the Event JSON in lambda:
+
+```
+{
+  "test_mode": true
+}
+```
 
 ## Setup
 
