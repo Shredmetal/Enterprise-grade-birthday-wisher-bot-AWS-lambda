@@ -7,7 +7,7 @@ from src.birthday_wisher.helpers.openai_handler import OpenAIHandler
 from src.test.lambdaintegrationtest.lambda_integration_test import run_lambda_tests
 
 
-def lambda_handler(event):
+def lambda_handler(event, context):
     """AWS Lambda handler for birthday wishes application"""
     if event.get('test_mode', False):
         return run_lambda_tests()
