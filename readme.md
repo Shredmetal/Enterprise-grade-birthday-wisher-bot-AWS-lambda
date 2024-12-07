@@ -2,11 +2,15 @@
 
 [![codecov](https://codecov.io/github/Shredmetal/Enterprise-grade-birthday-wisher-bot-AWS-lambda/graph/badge.svg?token=U7HDVH41PA)](https://codecov.io/github/Shredmetal/Enterprise-grade-birthday-wisher-bot-AWS-lambda)
 
-I was studying for AWS Cloud Practitioner and uhhh, got bored.
+I was studying for AWS Cloud Practitioner and uhhh, got bored. So naturally, I built an enterprise-grade birthday wishing system because who needs to remember birthdays when you can spend 8 hours automating it? 🎂
 
-Automatically sends personalised birthday wishes using OpenAI. 
+Automatically sends personalised birthday wishes using OpenAI/Anthropic, because apparently "Happy Birthday!" isn't complex enough anymore. 
 
-Reads birthdays from S3, generates messages via OpenAI/Anthropic depending on which you pick in constants (dw there's a fallback if you didn't pay the piper), and sends emails.
+Features:
+- Reads birthdays from a csv in S3 (why engineer when you can overengineer)
+- Generates messages via OpenAI/Anthropic (because we needed AI to say "Happy Birthday")
+- Sends emails (the old-fashioned part)
+- Has 86% test coverage (the remaining 14% (or maybe 10% more coverage, honestly, no idea) is running in AWS wondering why it exists)
 
 It's 86% coverage because it can't run the lambda integration test locally because that needs a live lambda environment. To run that, shove it on Lambda and run it in test mode.
 
