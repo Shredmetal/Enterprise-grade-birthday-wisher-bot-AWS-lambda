@@ -14,7 +14,7 @@ Reads birthdays from S3, generates messages via OpenAI (dw there's a fallback if
    - SSM Parameters:
 
 ```
-OPENAI_API_KEY
+OPENAI_API_KEY / ANTHROPIC_API_KEY # Depending on what you set LLM_PROVIDER_SELECTION in constants.py to
 SENDER_EMAIL
 EMAIL_PASSWORD
 ```
@@ -50,6 +50,12 @@ FILE_KEY=birthdays.csv
 Name: OPENAI_API_KEY 
 Type: SecureString 
 Value: your-openai-key
+
+# Alternatively, depending on what you set in constants.py:
+
+Name: ANTHROPIC_API_KEY 
+Type: SecureString 
+Value: your-anthropic-key
 
 Name: SENDER_EMAIL 
 Type: SecureString 
