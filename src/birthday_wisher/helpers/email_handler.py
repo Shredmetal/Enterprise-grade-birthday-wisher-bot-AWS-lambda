@@ -1,10 +1,11 @@
 import smtplib
-
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from src.birthday_wisher.constants.constants import YOUR_EMAIL
 from src.birthday_wisher.helpers.secret_manager import SecretManager
 
-class EmailHandler:
 
+class EmailHandler:
     @staticmethod
     def send_birthday_emails(birthday_data, email_text) -> bool:
         """Send birthday emails to the birthday person and CC Yourself"""
@@ -13,28 +14,36 @@ class EmailHandler:
             sender_email = SecretManager.get_secret('SENDER_EMAIL')
             email_password = SecretManager.get_secret('EMAIL_PASSWORD')
 
-            with smtplib.SMTP("smtp.gmail.com") as connection:
-                # Send to birthday person
-                connection.starttls()
-                connection.login(user=sender_email, password=email_password)
+            # Create birthday email
+            birthday_msg = MIMEMultipart()
+            birthday_msg['From'] = sender_email
+            birthday_msg['To'] = birthday_data['email']
+            birthday_msg['Subject'] = "Happy Birthday!"
+            birthday_msg.attach(MIMEText(email_text, 'plain', 'utf-8'))
+
+            # Create notification email
+            notification_msg = MIMEMultipart()
+            notification_msg['From'] = sender_email
+            notification_msg['To'] = YOUR_EMAIL
+            notification_msg['Subject'] = f"{birthday_data['name']}'s Birthday"
+            notification_text = (
+                f"The bot has sent birthday wishes to {birthday_data['name']}. "
+                f"You may wish to consider sending something a little more personal with a text message."
+            )
+            notification_msg.attach(MIMEText(notification_text, 'plain', 'utf-8'))
+
+            # Send emails
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+                server.login(user=sender_email, password=email_password)
 
                 # Send birthday wish
-                connection.sendmail(
-                    from_addr=sender_email,
-                    to_addrs=birthday_data['email'],
-                    msg=f"Subject:Happy Birthday!\n\n{email_text}"
-                )
+                server.send_message(birthday_msg)
 
-                # Send notification to Yourself
-                connection.sendmail(
-                    from_addr=sender_email,
-                    to_addrs=YOUR_EMAIL,
-                    msg=f"Subject:{birthday_data['name']}'s Birthday\n\n"
-                        f"The bot has sent birthday wishes to {birthday_data['name']}. "
-                        f"You may wish to consider sending something a little more personal with a text message."
-                )
+                # Send notification
+                server.send_message(notification_msg)
 
             return True
+
         except Exception as e:
             print(f"Error sending email: {str(e)}")
             return False

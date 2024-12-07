@@ -14,7 +14,7 @@ class TestOpenAIMessage(unittest.TestCase):
     @mock_aws
     def test_get_openai_message(self):
 
-        ssm = boto3.client('ssm', region_name='us-east-1')
+        ssm = boto3.client('ssm', region_name='ap-southeast-1')
 
         api_key = os.getenv("OPENAI_API_KEY")
         if not api_key:
@@ -58,7 +58,7 @@ class TestOpenAIMessage(unittest.TestCase):
         }
 
         # Don't set up any SSM parameters - this will cause the OpenAI call to fail
-        ssm = boto3.client('ssm', region_name='us-east-1')
+        ssm = boto3.client('ssm', region_name='ap-southeast-1')
         result = OpenAIHandler.get_openai_message(birthday_data)
 
         expected_message = (f"Happy Birthday, {birthday_data['name']}. "

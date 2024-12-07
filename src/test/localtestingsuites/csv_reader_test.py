@@ -10,7 +10,7 @@ class TestBirthdayChecker(unittest.TestCase):
     @mock_aws
     def test_get_todays_birthdays(self):
 
-        s3 = boto3.client("s3", region_name="us-east-1")
+        s3 = boto3.client("s3", region_name="ap-southeast-1")
         bucket_name = "mock_bucket"
         file_key = "birthdays.csv"
         current_day = datetime.now(timezone.utc).strftime("%d")

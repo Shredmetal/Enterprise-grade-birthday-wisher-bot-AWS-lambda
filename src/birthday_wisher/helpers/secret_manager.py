@@ -5,7 +5,7 @@ class SecretManager:
 
     @staticmethod
     def get_secret(secret_name) -> str:
-        ssm = boto3.client('ssm', region_name='us-east-1')
+        ssm = boto3.client('ssm', region_name='ap-southeast-1')
         try:
             response = ssm.get_parameter(
                 Name=secret_name,
