@@ -6,7 +6,14 @@ from src.birthday_wisher.helpers.get_birthdays import BirthdayChecker
 
 
 class TestBirthdayChecker(unittest.TestCase):
+    """
+    Unit test class for validating the functionality of the BirthdayChecker class method.
 
+    This class contains test cases to verify that the method `get_todays_birthdays` in
+    the `BirthdayChecker` class works as expected when interacting with mocked AWS S3 services.
+    It ensures that the functionality correctly filters and retrieves birthday data
+    based on the current date.
+    """
     @mock_aws
     def test_get_todays_birthdays(self):
 

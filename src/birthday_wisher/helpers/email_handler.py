@@ -6,9 +6,30 @@ from src.birthday_wisher.helpers.secret_manager import SecretManager
 
 
 class EmailHandler:
+    """
+    Handles sending of birthday emails to the designated individuals and a
+    notification email to the sender. The purpose of this class is to automate
+    and streamline the process of sending birthday wishes while notifying the
+    user about the action taken. It facilitates email creation and delivery using
+    SMTP.
+
+    """
     @staticmethod
     def send_birthday_emails(birthday_data, email_text) -> bool:
-        """Send birthday emails to the birthday person and CC Yourself"""
+        """
+        Sends birthday emails to the specified recipient with a dedicated birthday
+        message and also a notification email to the configured email owner about
+        the action. Utilizes email server credentials retrieved securely and ensures
+        email delivery for both messages.
+
+        :param birthday_data: A dictionary containing details of the person whose
+            birthday it is. Key-value pairs include "name" (the name of the person)
+            and "email" (the recipient's email address).
+        :param email_text: The text content of the birthday email to be sent.
+        :return: A boolean value indicating whether the emails were sent
+            successfully or not.
+        :rtype: bool
+        """
         try:
             # Get email credentials from SSM
             sender_email = SecretManager.get_secret('SENDER_EMAIL')

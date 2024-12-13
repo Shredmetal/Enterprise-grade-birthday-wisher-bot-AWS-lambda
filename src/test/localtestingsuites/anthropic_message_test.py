@@ -10,7 +10,16 @@ from src.birthday_wisher.helpers.llm_api_factory import LLMAPIFactory
 load_dotenv()
 
 class TestAnthropicMessage(unittest.TestCase):
+    """
+    Unit test class for validating interactions with the Anthropic LLM backend.
 
+    This test class is designed to verify the behavior of the `anthropic` LLM handler
+    integration within the application. It tests both positive flows where valid API
+    configuration details are provided and ensures the LLM backend generates appropriate
+    output, as well as failure cases where misconfigured API parameters result in an
+    expected fallback response. The mock AWS SSM service is employed to simulate
+    retrieving secure API credentials.
+    """
     @mock_aws
     def test_get_anthropic_message(self):
 

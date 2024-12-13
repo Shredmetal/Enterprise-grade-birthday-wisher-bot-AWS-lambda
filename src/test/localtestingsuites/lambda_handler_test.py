@@ -8,7 +8,20 @@ from src.birthday_wisher.lambda_handler import lambda_handler
 
 
 class TestLambdaHandler(unittest.TestCase):
+    """
+    Test suite for the Lambda function handling birthday processing, utilizing AWS
+    mocks and patching external dependencies to simulate various scenarios of
+    success, failure, and edge cases.
 
+    This class leverages the `unittest` framework and includes mocked interactions
+    with AWS services and external dependencies. It verifies the Lambda handler's
+    responses and interactions under different conditions such as successful
+    birthday processing, no birthdays, failed email sending, exceptions, and
+    missing environment variables.
+
+    :ivar test_birthday_data: Test data representing a single birthday entry.
+    :type test_birthday_data: dict
+    """
     def setUp(self):
         # Set up environment variables for testing
         os.environ['BUCKET_NAME'] = 'test-bucket'

@@ -10,7 +10,20 @@ from src.birthday_wisher.helpers.llm_api_factory import LLMAPIFactory
 load_dotenv()
 
 class TestAnthropicMessage(unittest.TestCase):
+    """
+    Unittest class for testing interactions with LLM API handlers and parameter
+    store within a mocked AWS environment.
 
+    This class contains unit tests to verify the behavior of message generation
+    from actual LLM API handlers (Anthropic and OpenAI). It uses llm-app-test to
+    validate behavioral matches between generated messages and expected outputs
+    in order to ensure that the system and human prompts are getting the right
+    behavior out of the LLMs.
+
+    :ivar behavioral_asserter: Utility for asserting behavioral match between
+        generated messages and expected outputs.
+    :type behavioral_asserter: BehavioralAssertion
+    """
     def setUp(self):
         self.behavioral_asserter = BehavioralAssertion()
 

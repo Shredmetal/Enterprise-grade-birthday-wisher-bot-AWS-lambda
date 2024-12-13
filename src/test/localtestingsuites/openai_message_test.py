@@ -6,12 +6,19 @@ from moto import mock_aws
 
 from src.birthday_wisher.constants.constants import BirthdayWishesConstants
 from src.birthday_wisher.helpers.llm_api_factory import LLMAPIFactory
-from src.birthday_wisher.helpers.llm_api_handlers.openai_handler import OpenAIHandler
 
 load_dotenv()
 
 class TestOpenAIMessage(unittest.TestCase):
+    """
+    Unit test class to validate functionality of handling OpenAI API integration for birthday messages. The tests cover
+    successful and failure scenarios, ensuring the API calls, fallback mechanisms, and proper mock handling are functioning
+    as expected.
 
+    Ensures that the OpenAI API integration correctly retrieves the API key from AWS Systems Manager (SSM) Parameter Store,
+    and validates the response format and content when the API call succeeds. It also verifies fallback logic and messaging
+    when the API fails.
+    """
     @mock_aws
     def test_get_openai_message(self):
 

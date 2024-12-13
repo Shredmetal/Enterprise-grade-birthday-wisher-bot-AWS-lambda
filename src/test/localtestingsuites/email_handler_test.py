@@ -9,7 +9,23 @@ from src.birthday_wisher.constants.constants import BirthdayWishesConstants
 from src.birthday_wisher.helpers.email_handler import EmailHandler
 
 class TestEmailHandler(unittest.TestCase):
+    """
+    Unit Test Class for EmailHandler.
 
+    This class is designed to test the methods within the EmailHandler class,
+    particularly focusing on the functionality of sending birthday emails
+    through mocked AWS and SMTP_SSL services. It ensures robust testing of
+    various scenarios, such as successful email transmission, handling of
+    SMTP failures, and behavior when email credentials are missing. Each
+    test is structured using the unittest framework to validate the logic
+    and functionality of the EmailHandler class.
+
+    :ivar birthday_data: Placeholder for sample birthday data including recipient
+        details such as name, email, and tone (sarcastic or not).
+    :type birthday_data: dict
+    :ivar test_message: Sample birthday message used for testing email content.
+    :type test_message: str
+    """
     def setUp(self):
         load_dotenv()
 
