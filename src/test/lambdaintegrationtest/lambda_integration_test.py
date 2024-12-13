@@ -2,7 +2,11 @@ import os
 import unittest
 import io
 import boto3
+from datetime import datetime, timezone
 
+from src.birthday_wisher.constants.constants import BirthdayWishesConstants
+from src.birthday_wisher.helpers.email_handler import EmailHandler
+from src.birthday_wisher.helpers.llm_api_factory import LLMAPIFactory
 from src.birthday_wisher.helpers.secret_manager import SecretManager
 
 
@@ -94,6 +98,91 @@ class TestLambdaIntegration(unittest.TestCase):
                 self.assertEqual(len(expected_headers), len(data_row))
         except Exception as e:
             self.fail(f"Failed to validate file format: {str(e)}")
+
+    def test_full_birthday_flow_sarcastic(self):
+        """Test the complete flow from LLM message generation to email sending"""
+
+        # Set up test birthday data
+        birthday_data = {
+            "name": "John",
+            "email": BirthdayWishesConstants.YOUR_EMAIL,
+            "day": datetime.now(timezone.utc).strftime("%d"),
+            "month": datetime.now(timezone.utc).strftime("%m"),
+            "sarcastic": "true"
+        }
+
+        try:
+            # Get LLM provider
+            llm_provider = LLMAPIFactory.get_handler(
+                BirthdayWishesConstants.LLM_PROVIDER_SELECTION
+            )
+
+            # Generate birthday message
+            email_text = llm_provider.get_birthday_message(birthday_data)
+
+            # Verify message content
+            self.assertIsNotNone(email_text)
+            self.assertTrue(len(email_text) > 0)
+
+            # Log generated message for manual review
+            print(f"\nGenerated birthday message:\n{email_text}\n")
+
+            # Send email
+            success = EmailHandler.send_birthday_emails(
+                birthday_data,
+                email_text
+            )
+
+            # Verify email sending
+            self.assertTrue(success, "Email sending failed")
+
+            print(f"\nEmail sent successfully to: {birthday_data['email']}")
+
+        except Exception as e:
+            self.fail(f"Full flow test failed: {str(e)}")
+
+    def test_full_birthday_flow_non_sarcastic(self):
+        """Test the complete flow from LLM message generation to email sending"""
+
+        # Set up test birthday data
+        birthday_data = {
+            "name": "John",
+            "email": BirthdayWishesConstants.YOUR_EMAIL,
+            "day": datetime.now(timezone.utc).strftime("%d"),
+            "month": datetime.now(timezone.utc).strftime("%m"),
+            "sarcastic": "false"
+        }
+
+        try:
+            # Get LLM provider
+            llm_provider = LLMAPIFactory.get_handler(
+                BirthdayWishesConstants.LLM_PROVIDER_SELECTION
+            )
+
+            # Generate birthday message
+            email_text = llm_provider.get_birthday_message(birthday_data)
+
+            # Verify message content
+            self.assertIsNotNone(email_text)
+            self.assertTrue(len(email_text) > 0)
+
+            # Log generated message for manual review
+            print(f"\nGenerated birthday message:\n{email_text}\n")
+
+            # Send email
+            success = EmailHandler.send_birthday_emails(
+                birthday_data,
+                email_text
+            )
+
+            # Verify email sending
+            self.assertTrue(success, "Email sending failed")
+
+            print(f"\nEmail sent successfully to: {birthday_data['email']}")
+
+        except Exception as e:
+            self.fail(f"Full flow test failed: {str(e)}")
+
 
 def run_lambda_tests():
     """Run Lambda integration tests"""

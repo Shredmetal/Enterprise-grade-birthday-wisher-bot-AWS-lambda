@@ -16,7 +16,7 @@ class OpenAIHandler:
             )
 
             target_name = birthday_data["name"]
-            sarcasm_setting = bool(birthday_data["sarcastic"])
+            sarcasm_setting = birthday_data["sarcastic"].lower() == "true"
 
             if random.random() < 0.1:
                 extra_message = BirthdayWishesConstants.EXTRA_BONUS_MESSAGE
