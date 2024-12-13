@@ -1,8 +1,9 @@
 import os
-import sys
 import unittest
 import io
 import boto3
+
+from src.birthday_wisher.helpers.secret_manager import SecretManager
 
 
 class TestLambdaIntegration(unittest.TestCase):
@@ -33,6 +34,25 @@ class TestLambdaIntegration(unittest.TestCase):
                 self.assertIsNotNone(response['Parameter']['Value'])
             except Exception as e:
                 self.fail(f"Failed to get SSM parameter {param_name}: {str(e)}")
+
+    def test_secret_manager_retrieval(self):
+        """Test that SecretManager can retrieve all required secrets"""
+        secret_manager = SecretManager()
+        required_params = [
+            'ANTHROPIC_API_KEY',
+            'OPENAI_API_KEY',
+            'SENDER_EMAIL',
+            'EMAIL_PASSWORD'
+        ]
+
+        for param_name in required_params:
+            try:
+                value = secret_manager.get_secret(param_name)
+                self.assertIsNotNone(value)
+                self.assertTrue(len(value) > 0,
+                                f"Secret {param_name} exists but is empty")
+            except Exception as e:
+                self.fail(f"SecretManager failed to get parameter {param_name}: {str(e)}")
 
     def test_s3_bucket_accessible(self):
         """Test that S3 bucket exists and is accessible"""

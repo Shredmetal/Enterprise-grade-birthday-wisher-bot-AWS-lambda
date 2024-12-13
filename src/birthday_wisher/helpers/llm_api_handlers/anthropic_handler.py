@@ -1,10 +1,6 @@
 import random
 import anthropic
-from src.birthday_wisher.constants.constants import (
-    SARCASM_FALSE_PROMPT, SARCASM_FALSE_SYS_MSG,
-    SARCASM_TRUE_PROMPT, SARCASM_TRUE_SYS_MSG,
-    EXTRA_BONUS_MESSAGE, YOUR_NAME, FALLBACK_MSG
-)
+from src.birthday_wisher.constants.constants import BirthdayWishesConstants
 from src.birthday_wisher.helpers.secret_manager import SecretManager
 from venv import logger
 
@@ -20,16 +16,16 @@ class AnthropicHandler:
             sarcasm_setting = bool(birthday_data["sarcastic"])
 
             if random.random() < 0.1:
-                extra_message = EXTRA_BONUS_MESSAGE
+                extra_message = BirthdayWishesConstants.EXTRA_BONUS_MESSAGE
             else:
                 extra_message = ""
 
             if not sarcasm_setting:
-                prompt = SARCASM_FALSE_PROMPT(target_name)
-                system_message = SARCASM_FALSE_SYS_MSG
+                prompt = BirthdayWishesConstants.SARCASM_FALSE_PROMPT(target_name)
+                system_message = BirthdayWishesConstants.SARCASM_FALSE_SYS_MSG
             else:
-                prompt = SARCASM_TRUE_PROMPT(target_name)
-                system_message = (SARCASM_TRUE_SYS_MSG + extra_message)
+                prompt = BirthdayWishesConstants.SARCASM_TRUE_PROMPT(target_name)
+                system_message = (BirthdayWishesConstants.SARCASM_TRUE_SYS_MSG + extra_message)
 
             # Claude uses a different message format
             message = f"{system_message}\n\nHuman: {prompt}\n\nAssistant:"
@@ -55,4 +51,4 @@ class AnthropicHandler:
     @staticmethod
     def get_fallback_message(birthday_data) -> str:
         target_name = birthday_data["name"]
-        return FALLBACK_MSG(target_name)
+        return BirthdayWishesConstants.FALLBACK_MSG(target_name)

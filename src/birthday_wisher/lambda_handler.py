@@ -1,7 +1,7 @@
 import os
 from venv import logger
 
-from src.birthday_wisher.constants.constants import LLM_PROVIDER_SELECTION
+from src.birthday_wisher.constants.constants import BirthdayWishesConstants
 from src.birthday_wisher.helpers.email_handler import EmailHandler
 from src.birthday_wisher.helpers.get_birthdays import BirthdayChecker
 from src.birthday_wisher.helpers.llm_api_factory import LLMAPIFactory
@@ -30,7 +30,7 @@ def lambda_handler(event, context):
 
         for birthday_data in todays_birthdays:
             try:
-                llm_provider = LLMAPIFactory.get_handler(LLM_PROVIDER_SELECTION)
+                llm_provider = LLMAPIFactory.get_handler(BirthdayWishesConstants.LLM_PROVIDER_SELECTION)
 
                 email_text = llm_provider.get_birthday_message(birthday_data)
 

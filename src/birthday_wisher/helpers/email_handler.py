@@ -1,7 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from src.birthday_wisher.constants.constants import YOUR_EMAIL
+from src.birthday_wisher.constants.constants import BirthdayWishesConstants
 from src.birthday_wisher.helpers.secret_manager import SecretManager
 
 
@@ -24,7 +24,7 @@ class EmailHandler:
             # Create notification email
             notification_msg = MIMEMultipart()
             notification_msg['From'] = sender_email
-            notification_msg['To'] = YOUR_EMAIL
+            notification_msg['To'] = BirthdayWishesConstants.YOUR_EMAIL
             notification_msg['Subject'] = f"{birthday_data['name']}'s Birthday"
             notification_text = (
                 f"The bot has sent birthday wishes to {birthday_data['name']}. "

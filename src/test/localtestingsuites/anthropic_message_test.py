@@ -4,7 +4,7 @@ import boto3
 from dotenv import load_dotenv
 from moto import mock_aws
 
-from src.birthday_wisher.constants.constants import YOUR_NAME
+from src.birthday_wisher.constants.constants import BirthdayWishesConstants
 from src.birthday_wisher.helpers.llm_api_factory import LLMAPIFactory
 
 load_dotenv()
@@ -67,17 +67,18 @@ class TestAnthropicMessage(unittest.TestCase):
         result = llm_provider.get_birthday_message(birthday_data)
 
         expected_message = (f"Happy Birthday, {birthday_data['name']}. "
-                            f"\n\nUnfortunately, it seems that {YOUR_NAME} has bungled up the AI-powered backend on this service. "
-                            f"Therefore, you are receiving this canned greeting that has no AI in it. If you wish to unleash "
-                            f"a torrent of abuse for the lack of care in ensuring sufficient balance on the OpenAI account, "
-                            f"please reply to this e-mail with your credit card details which {YOUR_NAME} will definitely not use "
+                            f"\n\nUnfortunately, it seems that {BirthdayWishesConstants.YOUR_NAME} has bungled up the "
+                            f"AI-powered backend on this service. Therefore, you are receiving this canned greeting "
+                            f"that has no AI in it. If you wish to unleash a torrent of abuse for the lack of care in "
+                            f"ensuring sufficient balance on the OpenAI account, please reply to this e-mail with your "
+                            f"credit card details which {BirthdayWishesConstants.YOUR_NAME} will definitely not use "
                             f"to buy himself a massive rack of GPUs to run an LLM in his wardrobe.")
 
         print(f"OpenAI Failed Fallback: {result}")
 
         self.assertEqual(result, expected_message)
         self.assertIn(birthday_data['name'], result)
-        self.assertIn(f"{YOUR_NAME} has bungled", result)
+        self.assertIn(f"{BirthdayWishesConstants.YOUR_NAME} has bungled", result)
 
 
 

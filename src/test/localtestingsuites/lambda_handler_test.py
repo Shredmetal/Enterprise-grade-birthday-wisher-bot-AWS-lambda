@@ -3,7 +3,7 @@ import unittest
 from unittest.mock import patch, MagicMock
 from moto import mock_aws
 
-from src.birthday_wisher.constants.constants import LLM_PROVIDER_SELECTION
+from src.birthday_wisher.constants.constants import BirthdayWishesConstants
 from src.birthday_wisher.lambda_handler import lambda_handler
 
 
@@ -54,7 +54,7 @@ class TestLambdaHandler(unittest.TestCase):
             os.environ['BUCKET_NAME'],
             os.environ['FILE_KEY']
         )
-        mock_llm_factory.assert_called_once_with(LLM_PROVIDER_SELECTION)
+        mock_llm_factory.assert_called_once_with(BirthdayWishesConstants.LLM_PROVIDER_SELECTION)
         mock_llm_provider.get_birthday_message.assert_called_once_with(self.test_birthday_data)
         mock_email.assert_called_once()
 

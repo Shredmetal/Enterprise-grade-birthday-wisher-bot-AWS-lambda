@@ -1,12 +1,11 @@
 import os
-import time
 import unittest
 from unittest.mock import patch, MagicMock
 from moto import mock_aws
 import boto3
 from dotenv import load_dotenv
 
-from src.birthday_wisher.constants.constants import YOUR_EMAIL
+from src.birthday_wisher.constants.constants import BirthdayWishesConstants
 from src.birthday_wisher.helpers.email_handler import EmailHandler
 
 class TestEmailHandler(unittest.TestCase):
@@ -16,7 +15,7 @@ class TestEmailHandler(unittest.TestCase):
 
         self.birthday_data = {
             "name": "John Doe",
-            "email": YOUR_EMAIL,
+            "email": BirthdayWishesConstants.YOUR_EMAIL,
             "sarcastic": "true"
         }
 
