@@ -15,8 +15,8 @@ I mean serious business and serious business in 2024 means AI.
 ### Core Functionality
 - Cloud-native customer data ingestion via S3-based data lake architecture 
   (because traditional databases are for companies stuck in 2023)
-- AI-powered personalized message generation leveraging industry-leading LLM providers 
-  (transforming "Happy Birthday" into a mission-critical AI use case)
+- AI-powered personalised message generation leveraging industry-leading LLM providers 
+  (transformational implementation of turning "Happy Birthday" into a mission-critical AI use case)
 - Legacy communication protocol support via SMTP 
   (because email still exists, unfortunately. This business believes in Web3 communications where our interactions are securely persisted on a blockchain, but we have not implemented it due to compatibility issues with legacy communications protocols)
 
