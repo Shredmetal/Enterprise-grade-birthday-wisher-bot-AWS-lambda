@@ -81,7 +81,7 @@ SENDER_EMAIL
 EMAIL_PASSWORD
 ```
 
-2. **Serverless Compute Resource Optimization**:
+2. **Serverless Compute Resource Optimisation**:
    - Enterprise-grade Python 3.12 runtime environment
    - Memory allocation optimized for business-critical operations: 256MB
    - Resource utilization parameters aligned with corporate efficiency metrics
