@@ -193,3 +193,78 @@ The mission-critical serverless infrastructure executes according to
 enterprise-defined temporal parameters via cloud-native EventBridge 
 orchestration, ensuring optimal resource utilisation and maintaining 
 strict SLA compliance.
+
+## Strategic Contribution Framework
+
+> This is actually a joke, please don't actually send me an essay, but if you want to send a PR with unnecessary code complication, it's definitely welcome.
+
+### Mission-Critical Onboarding Protocol
+At Honest Morgan's Premium Export-Quality Enterprise-Grade AI-Powered Cloud-Native 
+Birthday Wishing Platform, we take our enterprise responsibilities seriously. 
+All potential contributors must complete our rigorous onboarding process:
+
+1. **Self-Reflection Phase**
+   - Write a 2-word essay on "Why Enterprise-Grade Birthday Wishes Matter", the only correct answer is "because lol"
+   - Complete personality assessment to ensure cultural alignment with our 
+     mission-critical greeting delivery objectives
+   - Meditate on the quantum nature of Lambda integration tests
+
+2. **Technical Alignment Phase**
+   - Study our enterprise-grade architecture diagrams by producing them for interview number 25
+   - Memorise all AWS service limits and write it in a digestible format because our engineers haven't bothered for interview number 41
+   - Achieve enlightenment regarding the true meaning of "cloud-native" during interview number 57 when we get all 1,000 candidates to sit in a room together for chakra alignment
+
+### Current Strategic Enhancement Opportunities
+
+We are actively seeking enterprise-focused contributors for the following 
+mission-critical initiatives:
+
+1. **Exception Handling Optimisation**
+   - Current Status: Multiple bare exceptions being caught (extremely non-enterprise)
+   - Required Action: Implementation of proper exception handling paradigms
+   - Business Impact: Enhanced operational visibility and reduced quantum uncertainty
+   - Example of current non-enterprise pattern:
+
+```
+try: 
+   do_something_mission_critical() 
+except: # This hurts our enterprise credibility 
+   logger.error("Something failed")
+```
+
+Expected enterprise-grade implementation (real implementation should be more complex than this though):
+
+```
+try: 
+   do_something_mission_critical() 
+except Exception as e: 
+   logger.error(f"Mission-critical operation failed: {str(e)}") metrics.increment("birthday_wish_failure_count") 
+   raise BirthdayWishingPlatformException( f"Enterprise-grade operation failed: {str(e)}" )
+```
+
+### Contribution Guidelines
+
+1. All code must be:
+   - Enterprise-grade
+   - Cloud-native
+   - AI-powered (where applicable)
+   - Quantum-ready
+   - Blockchain-compatible
+   - Properly exception-handled
+
+2. All PRs must include:
+   - Impact analysis on birthday wish delivery SLAs
+   - Quantum state evaluation of Lambda tests
+   - Enterprise buzzword density metrics
+   - AI-generated code review comments
+
+### Getting Started
+
+1. Fork the repository (ensure your fork is enterprise-grade)
+2. Create a feature branch (following enterprise naming conventions)
+3. Implement enterprise-quality enhancements
+4. Submit PR with required documentation
+5. Await enterprise-grade review process
+
+Remember: We're not just sending birthday wishes, we're revolutionising 
+the enterprise birthday communication paradigm.
