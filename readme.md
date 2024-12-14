@@ -72,7 +72,7 @@ best practices
 
 1. **Mission-Critical AWS Infrastructure Requirements**:
    - Cloud-native S3 data lake implementation for customer relationship management: - S3 bucket with `birthdays.csv` file (required headers: name,email,day,month,sarcastic)
-   - Strategic data architecture utilizing enterprise-grade CSV paradigms: The 'sarcastic' header in the `birthdays.csv` file is a column that is either `true` or `false` and determines whether that customer is going to get a sarcastic birthday greeting or not.
+   - Strategic data architecture utilising enterprise-grade CSV paradigms: The 'sarcastic' header in the `birthdays.csv` file is a column that is either `true` or `false` and determines whether that customer is going to get a sarcastic birthday greeting or not.
    - SSM Parameters:
 
 ```
@@ -83,8 +83,8 @@ EMAIL_PASSWORD
 
 2. **Serverless Compute Resource Optimisation**:
    - Enterprise-grade Python 3.12 runtime environment
-   - Memory allocation optimized for business-critical operations: 256MB
-   - Resource utilization parameters aligned with corporate efficiency metrics
+   - Memory allocation optimised for business-critical operations: 256MB
+   - Resource utilisation parameters aligned with corporate efficiency metrics
    - Handler: `src.birthday_wisher.birthday_wisher.lambda_handler` (Scroll down to runtime settings in the new UI, it's not in Configuration)
    - Timeout: 5 minutes
    - Environment Variables:
