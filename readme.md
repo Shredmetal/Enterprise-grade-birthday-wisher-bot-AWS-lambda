@@ -22,8 +22,8 @@ I mean serious business and serious business in 2024 means AI.
 
 ### Quality Assurance Metrics
 - Industry-leading 86% test coverage with comprehensive validation suites
-  (the remaining 14% exists in a quantum state within AWS Lambda, 
-   simultaneously tested and untested until observed, or the assigned junior dev runs it in `test_mode`)
+  (remaining 14% requires AWS Lambda environment for integration testing, 
+   as per AWS best practices for serverless applications)
 
 ### Business Value Drivers
 - Synergy-optimised message delivery pipeline
@@ -32,8 +32,10 @@ I mean serious business and serious business in 2024 means AI.
 - Resource-optimised cloud infrastructure utilisation
 
 ### Compliance and Testing
-Test coverage metrics exclude Lambda integration tests due to cloud-native infrastructure requirements. For complete enterprise 
-validation, deploy to Lambda and execute in compliance verification mode:
+Test coverage metrics exclude Lambda integration tests as these require 
+cloud-native infrastructure for proper enterprise-grade validation. 
+For complete enterprise validation, deploy to Lambda and execute in 
+compliance verification mode:
 
 ```
 {
@@ -207,7 +209,6 @@ All potential contributors must complete our rigorous onboarding process:
    - Write a 2-word essay on "Why Enterprise-Grade Birthday Wishes Matter", the only correct answer is "because lol"
    - Complete personality assessment to ensure cultural alignment with our 
      mission-critical greeting delivery objectives
-   - Meditate on the quantum nature of Lambda integration tests
 
 2. **Technical Alignment Phase**
    - Study our enterprise-grade architecture diagrams by producing them for interview number 25
@@ -222,7 +223,7 @@ mission-critical initiatives:
 1. **Exception Handling Optimisation**
    - Current Status: Multiple bare exceptions being caught (extremely non-enterprise)
    - Required Action: Implementation of proper exception handling paradigms
-   - Business Impact: Enhanced operational visibility and reduced quantum uncertainty
+   - Business Impact: Enhanced operational visibility
    - Example of current non-enterprise pattern:
 
 ```
@@ -248,13 +249,11 @@ except Exception as e:
    - Enterprise-grade
    - Cloud-native
    - AI-powered (where applicable)
-   - Quantum-ready
    - Blockchain-compatible
    - Properly exception-handled
 
 2. All PRs must include:
    - Impact analysis on birthday wish delivery SLAs
-   - Quantum state evaluation of Lambda tests
    - Enterprise buzzword density metrics
    - AI-generated code review comments
 
