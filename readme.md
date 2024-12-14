@@ -152,14 +152,60 @@ Value: your-app-password
 
 ## Deployment
 
-Run `create_deployment_package.py` to create a Lambda deployment package:
+1. Run `create_deployment_package.py` to create a Lambda deployment package:
 
 
 ```
 python create_deployment_package.py
 ```
 
-Upload the generated `deployment-package.zip` to Lambda.
+2. Upload the generated `deployment-package.zip` to Lambda.
+
+3. IAM Roles
+
+**Set up IAM Role For your Lambda Function**:
+
+- Create the Role
+- Go to IAM > Roles
+- Click "Create role"
+- Under "Trusted entity type" select "AWS service"
+- Under "Use case" select "Lambda"
+- Click "Next"
+
+**Add Permissions**
+
+In the permissions search bar, search and select:
+```
+AmazonS3ReadOnlyAccess
+AmazonSSMReadOnlyAccess
+AWSLambdaBasicExecutionRole
+```
+
+- Click "Next"
+- Name the Role
+- Give it a name like "birthday-wisher-lambda-role" (because enterprise-grade systems need properly documented naming conventions)
+- Add a description like "Enables our mission-critical birthday communication platform to access required AWS services"
+- Click "Create role"
+
+**Attaching the Role to Lambda**
+
+- Go to Your Lambda Function
+- Click on the "Configuration" tab
+- Click on "Permissions" in the left sidebar
+- Under "Execution role", click "Edit"
+- Select your newly created role from the dropdown
+- Click "Save"
+
+**Lambda Environment Variable Setup**
+
+- Click on the configuration tab of your Lambda function
+- Click on Environment Variables
+- Create environment variables of where you stored your super important customer database in S3 with the folliowing key-value pairs:
+
+```
+BUCKET_NAME=name_of_s3_bucket_with_customer_data
+FILE_KEY=file_key_of_csv_containing_customer_data
+```
 
 ## Quality Assurance and Compliance Validation
 
