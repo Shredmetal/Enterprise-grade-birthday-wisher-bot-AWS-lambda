@@ -4,8 +4,8 @@
 # Also, they billed us $4,275.00 for that advice.
 
 # Core Enterprise Infrastructure
-/src/birthday_wisher/          @Shredmetal  # Acting as CTO, VP, and Senior Architect (budget constraints)
-/src/test/                     @Shredmetal  # Also acting as QA Lead (further budget constraints)
+/src/birthday_wisher/         @Shredmetal  # Acting as CTO, VP, and Senior Architect (budget constraints)
+/src/test/                    @Shredmetal  # Also acting as QA Lead (further budget constraints)
 
 # Strategic Documentation
 *.md                          @Shredmetal  # Wearing documentation hat
