@@ -1,4 +1,4 @@
-# Honest Morgan's Premium Export-Quality Enterprise-Grade AI-Powered Cloud-Native Serverless-Architecture Business-Oriented Birthday Wishing Platform
+# Honest and Very Serious Business' Premium Export-Quality Enterprise-Grade AI-Powered Cloud-Native Serverless-Architecture Business-Oriented Birthday Wishing Platform
 
 [![codecov](https://codecov.io/github/Shredmetal/Enterprise-grade-birthday-wisher-bot-AWS-lambda/graph/badge.svg?token=U7HDVH41PA)](https://codecov.io/github/Shredmetal/Enterprise-grade-birthday-wisher-bot-AWS-lambda)
 
