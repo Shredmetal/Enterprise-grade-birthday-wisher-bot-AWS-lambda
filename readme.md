@@ -65,6 +65,10 @@ optimal cost-efficiency metrics in a cloud-native environment.
 
 ## Enterprise Resource Provisioning
 
+### Enterprise Quality Architecture Diagram:
+
+![Architecture Diagram](https://i.imgur.com/1YU2JSg.jpeg)
+
 ### Cloud Infrastructure Provisioning Protocol
 
 Implementation of mission-critical greeting delivery infrastructure 
