@@ -256,7 +256,7 @@ we take our enterprise responsibilities seriously.
 All potential contributors must complete our rigorous onboarding process:
 
 1. **Self-Reflection Phase**
-   - Write a 2-word essay on "Why Enterprise-Grade Birthday Wishes Matter", the only correct answer is "because lol"
+   - Write a 2,000-word essay on "Why Enterprise-Grade Birthday Wishes Matter"
    - Complete personality assessment to ensure cultural alignment with our 
      mission-critical greeting delivery objectives
 
